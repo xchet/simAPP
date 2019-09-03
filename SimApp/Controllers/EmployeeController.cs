@@ -27,5 +27,18 @@ namespace SimApp.Controllers
                 return db.Employees.ToList<Employee>();
             }
         }
+
+        [HttpGet]
+        public ActionResult AddOrEdit(int id = 0)
+        {
+            Employee employee = new Employee();
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult AddOrEdit()
+        {
+            return View();
+        }
     }
 }
