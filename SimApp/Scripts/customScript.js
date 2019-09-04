@@ -1,4 +1,15 @@
-﻿function showImagePreview(imageFile, imagePreview) {
+﻿$(function () {
+    $("#loaderbody").addClass('hide');
+
+
+    $(document).bind('ajaxStart', function () {
+        $("#loaderbody").removeClass('hide');
+    }).bind('ajaxStop', function () {
+        $("#loaderbody").addClass('hide');
+    });
+});
+
+function showImagePreview(imageFile, imagePreview) {
     if (imageFile.files && imageFile.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -20,6 +31,7 @@ function jQueryAjaxPost(form) {
                     $("#tab1").html(response.html);
                     refreshAddNewTab($(form).attr('data-restUrl'), true);
                     $.notify(response.message, "success");
+                    // jQuery Dataable
                     if (typeof activatejQueryTable !== 'undefined' && $.isFunction(activatejQueryTable))
                         activatejQueryTable();
                 }
@@ -74,6 +86,7 @@ function Delete(url) {
                 if (response.success) {
                     $("#tab1").html(response.html);
                     $.notify(response.message, "warn");
+                    // jQuery Dataable
                     if (typeof activatejQueryTable !== 'undefined' && $.isFunction(activatejQueryTable))
                         activatejQueryTable();
                 }

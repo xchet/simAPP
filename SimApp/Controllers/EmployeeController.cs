@@ -53,7 +53,7 @@ namespace SimApp.Controllers
                 {
                     string fileName = Path.GetFileNameWithoutExtension(employee.imageFile.FileName);
                     string extension = Path.GetExtension(employee.imageFile.FileName);
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    fileName = "SimApp" + DateTime.Now.ToString("yymmssfff") + extension;
                     employee.EmployeeImage = "~/Docs/Images/" + fileName;
                     employee.imageFile.SaveAs(Path.Combine(Server.MapPath("~/Docs/Images/"), fileName));
                 }
