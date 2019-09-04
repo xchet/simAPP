@@ -8,20 +8,6 @@
     }
 }
 
-//function jQueryAjaxPost(form) {
-//    $.validator.unobtrusive.parse(form);
-//    if ($(form).valid()) {
-//        $.ajax({
-//            type: 'POST',
-//            url: form.action,
-//            data: new FormData(form),
-//            success: function (response) {
-//                $('#tab1').html(response);
-//            }
-//        })
-//    }
-//}
-
 function jQueryAjaxPost(form) {
     $.validator.unobtrusive.parse(form);
     if ($(form).valid()) {
@@ -71,7 +57,7 @@ function Edit(url) {
         type: 'GET',
         url: url,
         success: function (response) {
-            $("#secondTab").html(response);
+            $("#tab2").html(response);
             $('ul.nav.nav-tabs a:eq(1)').html('Edit');
             $('ul.nav.nav-tabs a:eq(1)').tab('show');
         }
@@ -80,13 +66,13 @@ function Edit(url) {
 }
 
 function Delete(url) {
-    if (confirm('Are you sure to delete this record ?') == true) {
+    if (confirm('Do you want to delete this record ?') == true) {
         $.ajax({
             type: 'POST',
             url: url,
             success: function (response) {
                 if (response.success) {
-                    $("#firstTab").html(response.html);
+                    $("#tab1").html(response.html);
                     $.notify(response.message, "warn");
                     if (typeof activatejQueryTable !== 'undefined' && $.isFunction(activatejQueryTable))
                         activatejQueryTable();
